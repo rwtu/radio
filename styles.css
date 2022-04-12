@@ -1,0 +1,113 @@
+#radio-outer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 148px;
+}
+
+#radio-inner {
+    position: relative;
+}
+
+
+/* Hide message */
+
+#message {
+    display: none;
+}
+
+ul {
+    position: absolute;
+    width: 290px;
+    top: 145px;
+    left: 165px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    z-index: 2;
+    list-style-type: none;
+}
+
+ul li button {
+    width: 60px;
+    height: 40px;
+    border: 2px #E5E5E5 solid;
+    color: #E5E5E5;
+    background-color: #807474;
+    /* box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.25); */
+    font-size: 20px;
+}
+
+#first {
+    border-left-width: 4px;
+}
+
+#last {
+    border-right-width: 4px;
+}
+
+ul li button.num:hover {
+    /* box-shadow: 0px 0px 13.3303px 0.666514px rgba(0, 0, 0, 0.25); */
+    cursor: pointer;
+    font-size: 25px;
+}
+
+#pause:hover,
+#play:hover {
+    cursor: pointer;
+    font-size: 23px;
+}
+
+
+/* https://codepen.io/Knovour/pen/boJNPN */
+
+.marquee {
+    position: absolute;
+    top: 95px;
+    left: 190px;
+    width: 320px;
+    max-width: 100%;
+    height: 200px;
+    overflow-x: hidden;
+    z-index: 0;
+}
+
+.track {
+    position: absolute;
+    white-space: nowrap;
+    will-change: transform;
+    animation: marquee 25s linear infinite;
+    font-size: 30px;
+    color: white;
+    font-family: 'VT323', monospace;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.speaker {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    min-width: 600px;
+}
+
+#left {
+    position: absolute;
+    top: 85px;
+    left: 40px;
+}
+
+#right {
+    position: absolute;
+    top: 85px;
+    right: 40px;
+}

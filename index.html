@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/7b4ea1dbd1.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/rythm.js/"></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/rythm.js/2.2.5/rythm.min.js"></script>
+</head>
+
+<body>
+    <div id="radio-outer">
+        <div id="radio-inner">
+            <img src="images/radio.png">
+            <ul>
+                <li>
+                    <button class="num" id="first">1</button>
+                </li>
+                <li>
+                    <button class="num">2</button>
+                </li>
+                <li>
+                    <button class="num">3</button>
+                </li>
+                <li>
+                    <button><i class="fa-solid fa-play" id="play"></i></button>
+                </li>
+                <li>
+                    <button id="last"><i class="fa-solid fa-pause" id="pause"></i></button>
+                </li>
+            </ul>
+            <div class="speaker">
+                <img class="rythm rythm-bass" src="images/speaker.png" id="left">
+            </div>
+            <div class="speaker">
+                <img class="rythm rythm-bass" src="images/speaker.png" id="right">
+            </div>
+            <div class="marquee">
+                <div class="track">
+                    <div class="content"> &nbsp; CLICK ON A NUMBER TO HEAR A SONG - CLICK ON A NUMBER TO HEAR A SONG - CLICK ON A NUMBER TO HEAR A SONG -</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var rythm = new Rythm()
+    const numBtns = document.querySelectorAll("ul li button.num");
+    const content = document.querySelector(".content");
+    var flag = 0; // music has been set
+    numBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            if (rythm.stopped === false) {
+                rythm.stop()
+            }
+            if (flag == 0) flag = 1;
+            restoreColor();
+            switch (btn.textContent) {
+                case "1":
+                    btn.style.backgroundColor = "#5f5555";
+                    content.textContent = "EVENTUALLY BY TAME IMPALA - EVENTUALLY BY TAME IMPALA - EVENTUALLY BY TAME IMAPALA - EVENTUALLY BY TAME IMAPALA - EVENTUALLY BY TAME IMAPALA - "
+                    rythm.setMusic('media/eventually.mp3');
+                    break;
+                case "2":
+                    btn.style.backgroundColor = "#5f5555";
+                    content.textContent = "LOVEMEMORE. BY DOSII - LOVEMEMORE. BY DOSII - LOVEMEMORE. BY DOSII - LOVEMEMORE. BY DOSII - LOVEMEMORE. BY DOSII - LOVEMEMORE. BY DOSII - "
+                    rythm.setMusic('media/lovememore.mp3');
+                    break;
+                case "3":
+                    btn.style.backgroundColor = "#5f5555";
+                    content.textContent = "TELEVISION/SO FAR SO GOOD BY REX ORANGE COUNTY - TELEVISION/SO FAR SO GOOD BY REX ORANGE COUNTY - TELEVISION/SO FAR SO GOOD BY REX ORANGE COUNTY - "
+                    rythm.setMusic('media/television.mp3');
+                    break;
+                default:
+                    break;
+            }
+            rythm.setGain(0.1);
+            rythm.start();
+        })
+    })
+
+    function restoreColor() {
+        numBtns.forEach(btn => {
+            btn.style.backgroundColor = "#807474";
+        });
+    }
+
+    document.getElementById("play").addEventListener("click", () => {
+        if (flag == 1) {
+            rythm.setGain(0.1);
+            rythm.start();
+        }
+    });
+
+    document.getElementById("pause").addEventListener("click", () => {
+        if (rythm.stopped === false) {
+            rythm.stop()
+        }
+    })
+</script>
+
+</html>
